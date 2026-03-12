@@ -1,158 +1,107 @@
 # TridentDataHub
 
-A React-based static website for browsing and filtering research datasets with links to Borealis and Zenodo repositories. Features an interactive table built with TanStack Table.
+## Dataset Type Definition
 
-## Features
-
-- 🔍 **Filter by datatype and institution** - Easy-to-use dropdown filters
-- 📊 **Interactive table** - Sortable columns powered by TanStack Table
-- 🔗 **DOI links** - Direct links to Borealis and Zenodo datasets
-- 📱 **Responsive design** - Works on desktop, tablet, and mobile
-- ⚡ **Fast and lightweight** - Static React application with Vite
-- 🎨 **Clean UI** - Modern, accessible interface
-
-## Quick Start
-
-### Local Development
-
-1. **Clone the repository**
-   ```bash
-   git clone <your-repo-url>
-   cd TridentDataHub
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open your browser**
-   Navigate to `http://localhost:5173/TridentDataHub/` (or the URL shown in terminal)
-
-## Deployment to GitHub Pages
-
-### Option 1: Automatic Deployment (Recommended)
-
-1. **Update the base path in `vite.config.ts`**
-   
-   If deploying to `https://username.github.io/TridentDataHub/`:
-   ```ts
-   base: '/TridentDataHub/',
-   ```
-   
-   If deploying to `https://username.github.io/` (user/organization pages):
-   ```ts
-   base: '/',
-   ```
-
-2. **Push to GitHub**
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   git push origin main
-   ```
-
-3. **Enable GitHub Pages**
-   - Go to your repository Settings → Pages
-   - Set Source to "GitHub Actions"
-
-4. **Your site will be deployed automatically** on every push to the `main` branch.
-
-### Option 2: Manual Deployment
-
-1. **Build the project**
-   ```bash
-   npm run build
-   ```
-
-2. **Deploy the `dist` folder** to your hosting service of choice
-
-## Customization
-
-### Adding/Editing Datasets
-
-Edit `src/data.ts` to add, remove, or modify datasets:
+### TypeScript Interface
 
 ```typescript
+interface Dataset {
+  id: string; // Unique identifier for the dataset
+  title: string; // Human-readable dataset title
+  description: string; // Detailed description of the dataset content
+  datatype: string; // Category/type of research data
+  institution: string; // Research institution or organization
+  doi: string; // Digital Object Identifier (e.g., "10.5281/zenodo.12345")
+  repository: "borealis" | "zenodo"; // Repository where data is hosted
+  year?: number; // Publication year (optional)
+  authors?: string[]; // List of authors (optional)
+  tags?: string[]; // Keywords for categorization (optional)
+}
+```
+
+## Field Descriptions
+
+### Required Fields
+
+| Field         | Type                     | Description                       | Example                                               |
+| ------------- | ------------------------ | --------------------------------- | ----------------------------------------------------- |
+| `id`          | `string`                 | Unique identifier for the dataset | `"arctic-permafrost-2024"`                            |
+| `title`       | `string`                 | Human-readable title              | `"Arctic Permafrost Carbon Dynamics Analysis"`        |
+| `description` | `string`                 | Detailed description of content   | `"Comprehensive dataset measuring carbon release..."` |
+| `datatype`    | `string`                 | Research category                 | `"Climate Data"`, `"Genomic"`, `"Imaging"`            |
+| `institution` | `string`                 | Institution name                  | `"University of British Columbia"`                    |
+| `doi`         | `string`                 | DOI identifier                    | `"10.5281/zenodo.11223344"`                           |
+| `repository`  | `'borealis' \| 'zenodo'` | Data repository                   | `"borealis"` or `"zenodo"`                            |
+
+### Optional Fields
+
+| Field     | Type       | Description      | Example                                      |
+| --------- | ---------- | ---------------- | -------------------------------------------- |
+| `year`    | `number`   | Publication year | `2024`                                       |
+| `authors` | `string[]` | Author names     | `["Dr. Sarah Chen", "Dr. Michael Thompson"]` |
+| `tags`    | `string[]` | Keywords         | `["climate-change", "carbon-cycle"]`         |
+
+## Adding Datasets
+
+### Location
+
+Edit `src/data.ts` to add new datasets:
+
+```typescript
+import type { Dataset } from "./types";
+
 export const datasets: Dataset[] = [
+  // ... existing datasets
+
   {
-    id: 'unique-id',
-    title: 'Dataset Title',
-    description: 'Description of the dataset',
-    datatype: 'Climate Data', // Your datatype
-    institution: 'University Name',
-    doi: '10.xxxx/xxxxxx',
-    repository: 'borealis', // or 'zenodo'
+    id: "unique-id-123",
+    title: "Your Dataset Title",
+    description: "Clear description of what the dataset contains",
+    datatype: "Your Category",
+    institution: "Your Institution",
+    doi: "10.5281/zenodo.XXXXXXXX", // or 10.11587/XXXXXXXX for Borealis
+    repository: "zenodo", // or 'borealis'
     year: 2024,
-    authors: ['Author Name'],
-    tags: ['tag1', 'tag2']
+    authors: ["Author One", "Author Two"],
+    tags: ["keyword1", "keyword2", "keyword3"],
   },
-  // Add more datasets...
-]
+];
 ```
 
-The table automatically updates with new datatypes and institutions.
+### DOI Format Guidelines
 
-### Styling
+**Borealis DOIs:**
 
-- **Global styles**: `src/index.css`
-- **Custom styles**: `src/styles.css`
-- **Component styles**: Inline Tailwind classes in components
+- Format: `10.11587/XXXXXXXX`
+- Repository: `'borealis'`
+- URL pattern: `https://borealisdata.ca/dataset.xhtml?persistentId=doi:{doi}`
 
-To customize colors, fonts, or layout, modify the respective CSS files or component classes.
+**Zenodo DOIs:**
 
-## Project Structure
+- Format: `10.5281/zenodo.XXXXXXXX`
+- Repository: `'zenodo'`
+- URL pattern: `https://doi.org/{doi}`
 
-```
-TridentDataHub/
-├── .github/
-│   └── workflows/
-│       └── deploy.yml          # GitHub Actions deployment workflow
-├── src/
-│   ├── data.ts                 # Dataset data and filter options (15 datasets)
-│   ├── types.ts                # TypeScript type definitions
-│   ├── styles.css              # Custom styles
-│   ├── index.css               # Global styles
-│   ├── main.tsx                # Application entry point
-│   └── App.tsx                  # Main component with table and filters
-├── vite.config.ts              # Vite configuration
-├── package.json                # Dependencies and scripts
-├── .gitignore                  # Git ignore patterns
-└── README.md                   # This file
-```
+### Best Practices
 
-## Available Scripts
+1. **Unique IDs**: Use descriptive, unique identifiers (e.g., `"arctic-permafrost-2024"`)
+2. **Descriptions**: Be specific about dataset content, scope, and methodology
+3. **Datatypes**: Use consistent category names (check existing datatypes first)
+4. **Institutions**: Use full, official institution names
+5. **Tags**: Include 3-5 relevant keywords for discoverability
+6. **DOIs**: Verify DOI format matches the repository
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build locally
-- `npm run lint` - Run ESLint
-- `npm run preview:pages` - Preview with GitHub Pages base path
+### Automatic Filters
 
-## Technologies
+The table automatically extracts unique values for:
 
-- **React 19** - UI library
-- **TanStack Table 8** - Interactive table with sorting
-- **Vite 8** - Build tool and dev server
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Utility-first CSS (via CDN)
+- **Datatype filter**: Derived from all `datatype` values
+- **Institution filter**: Derived from all `institution` values
 
-## Dataset Information
+New categories are automatically included when you add datasets with new values.
 
-Currently includes **15 datasets** from various institutions:
-- **Datatypes**: Climate Data, Genomic, Linguistic, Imaging, Environmental, Structural Biology, Energy, Public Health, Ecological, Computational Physics, Social Science, Materials Science, Engineering, Agricultural Science
-- **Institutions**: University of Alaska Fairbanks, University of British Columbia, University of Toronto, McGill University, University of Alberta, University of Saskatchewan
-- **Repositories**: Borealis, Zenodo
+## Data Location
 
-## License
-
-MIT
-
-## Support
-
-For issues or questions, please open an issue on GitHub.
+- **Type definition**: `src/types.ts`
+- **Dataset data**: `src/data.ts`
+- **Main component**: `src/App.tsx`
