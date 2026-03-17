@@ -15,8 +15,8 @@ import './styles.css'
 const columnHelper = createColumnHelper<Dataset>()
 
 const columns: ColumnDef<Dataset, any>[] = [
-  columnHelper.accessor('research', {
-    header: 'Research',
+  columnHelper.accessor('researcher', {
+    header: 'Researcher',
     cell: (info) => (
       <div className="font-medium text-gray-900">{info.getValue()}</div>
     ),

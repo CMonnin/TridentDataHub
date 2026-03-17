@@ -1,5 +1,5 @@
 export interface Dataset {
-  research: string
+  researcher: string
   researcherEmail: string
   institution: string
   datasetName: string

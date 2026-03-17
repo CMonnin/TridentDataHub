@@ -2,7 +2,7 @@ import type { Dataset } from './types'
 
 export const datasets: Dataset[] = [
   {
-    research: 'Cancer Immunotherapy Research',
+    researcher: 'Dr. Sarah Chen',
     researcherEmail: 'sarah.chen@uaf.edu',
     institution: 'University of Alaska Fairbanks',
     datasetName: 'Immunotherapy Response Biomarkers',
@@ -13,7 +13,7 @@ export const datasets: Dataset[] = [
     url: 'https://doi.org/10.11587/ABCD1234'
   },
   {
-    research: 'Neurodegenerative Disease Study',
+    researcher: 'Dr. James Wilson',
     researcherEmail: 'james.wilson@ubc.ca',
     institution: 'University of British Columbia',
     datasetName: "Alzheimer's Progression Markers",
@@ -23,7 +23,7 @@ export const datasets: Dataset[] = [
     url: 'https://doi.org/10.5281/zenodo.11223344'
   },
   {
-    research: 'Antibiotic Resistance Research',
+    researcher: 'Dr. Margaret Brown',
     researcherEmail: 'margaret.brown@utoronto.ca',
     institution: 'University of Toronto',
     datasetName: 'MRSA Genomic Sequencing',
@@ -34,7 +34,7 @@ export const datasets: Dataset[] = [
     url: 'https://doi.org/10.5281/zenodo.55667788'
   },
   {
-    research: 'Cardiovascular Disease Research',
+    researcher: 'Dr. Jennifer Martinez',
     researcherEmail: 'jennifer.martinez@mcgill.ca',
     institution: 'McGill University',
     datasetName: 'Heart Failure Clinical Trial Results',
@@ -45,7 +45,7 @@ export const datasets: Dataset[] = [
     url: 'https://doi.org/10.11587/WXYZ6789'
   },
   {
-    research: 'Diabetes Research',
+    researcher: 'Dr. William Johnson',
     researcherEmail: 'william.johnson@ualberta.ca',
     institution: 'University of Alberta',
     datasetName: 'Type 2 Diabetes Management Study',
@@ -56,7 +56,7 @@ export const datasets: Dataset[] = [
     url: 'https://doi.org/10.5281/zenodo.99887766'
   },
   {
-    research: 'Rare Disease Research',
+    researcher: 'Dr. Christopher Lewis',
     researcherEmail: 'christopher.lewis@ubc.ca',
     institution: 'University of British Columbia',
     datasetName: 'Cystic Fibrosis Drug Response',
@@ -67,7 +67,7 @@ export const datasets: Dataset[] = [
     url: 'https://doi.org/10.11587/LMNO3456'
   },
   {
-    research: 'Mental Health Research',
+    researcher: 'Dr. Andrew Young',
     researcherEmail: 'andrew.young@utoronto.ca',
     institution: 'University of Toronto',
     datasetName: 'Depression Treatment Outcomes',
@@ -78,7 +78,7 @@ export const datasets: Dataset[] = [
     url: 'https://doi.org/10.5281/zenodo.33445566'
   },
   {
-    research: 'Infectious Disease Research',
+    researcher: 'Dr. Nancy Scott',
     researcherEmail: 'nancy.scott@mcgill.ca',
     institution: 'McGill University',
     datasetName: 'COVID-19 Vaccine Efficacy',
@@ -89,7 +89,7 @@ export const datasets: Dataset[] = [
     url: 'https://doi.org/10.11587/QRST7890'
   },
   {
-    research: 'Autoimmune Disease Research',
+    researcher: 'Dr. Steven Clark',
     researcherEmail: 'steven.clark@ualberta.ca',
     institution: 'University of Alberta',
     datasetName: 'Rheumatoid Arthritis Biomarkers',
@@ -100,7 +100,7 @@ export const datasets: Dataset[] = [
     url: 'https://doi.org/10.5281/zenodo.77889900'
   },
   {
-    research: 'Oncology Research',
+    researcher: 'Dr. Joshua Hill',
     researcherEmail: 'joshua.hill@utoronto.ca',
     institution: 'University of Toronto',
     datasetName: 'Lung Cancer Treatment Response',
