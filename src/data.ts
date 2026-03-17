@@ -1,46 +1,56 @@
-import type { Dataset } from "./types";
+import type { Dataset } from './types'
 
-export const datasets: Dataset[] = [
-  {
-    researcher: "Stephanie Tullo",
-    researcherEmail: "s.tullo@placeholder.ca",
-    institution: "Douglas",
-    datasetName:
-      "Dataset for manuscript titled: Female mice exhibit resistance to disease progression despite early pathology in a transgenic mouse model inoculated with alpha-synuclein fibrils",
-    datasetDescription:
-      'This repository contains the source data and code for the analyses in the manuscript titled "Female mice exhibit resistance to disease progression despite early pathology in a transgenic mouse model inoculated with alpha-synuclein fibrils", accepted for publication at Communications Biology.',
-    datasetType:
-      "source data (demographics (csv) MRI statistical maps and group average (MINC), behavioural data (csv)) and code",
-    disease: "Synucleinopathies",
-    drug: "NA",
-    url: "https://doi.org/10.5281/zenodo.14655730",
-  },
-  {
-    researcher: "Stephanie Tullo",
-    researcherEmail: "s.tullo@placeholder.ca",
-    institution: "Douglas",
-    datasetName:
-      "In vivo and in silico alpha-synuclein propagation dynamics: The role of genotype, epicentre, and connectivity",
-    datasetDescription:
-      'This repository contains the source data and code for the analyses in the manuscript titled "In vivo and in silico alpha-synuclein propagation dynamics: The role of genotype, epicentre, and connectivity"',
-    datasetType:
-      "source data (demographics (csv) MRI statistical maps and group average (MINC), behavioural data (csv)) and code",
-    disease: "Synucleinopathies",
-    drug: "NA",
-    url: "https://doi.org/10.5281/zenodo.16614414",
-  },
-];
+// Parse TSV data
+function parseTSV(tsvContent: string): Dataset[] {
+  const lines = tsvContent.trim().split('\n')
+  const headers = lines[0].split('\t')
+  
+  const datasets: Dataset[] = []
+  
+  for (let i = 1; i < lines.length; i++) {
+    const values = lines[i].split('\t')
+    const dataset: Dataset = {
+      researcher: values[0],
+      researcherEmail: values[1],
+      institution: values[2],
+      datasetName: values[3],
+      datasetDescription: values[4],
+      datasetType: values[5],
+      disease: values[6],
+      drug: values[7],
+      url: values[8],
+    }
+    datasets.push(dataset)
+  }
+  
+  return datasets
+}
+
+// Import TSV file
+// @ts-ignore - Vite handles ?raw imports
+import dataTsvContent from './data.tsv?raw'
+
+export const datasets: Dataset[] = parseTSV(dataTsvContent)
+
+// Debug: Check parsing
+console.log('TSV Content length:', dataTsvContent.length)
+console.log('First line length:', dataTsvContent.split('\n')[0].length)
+console.log('Datasets parsed:', datasets.length)
+if (datasets.length > 0) {
+  console.log('First dataset:', JSON.stringify(datasets[0], null, 2))
+  console.log('First dataset URL:', datasets[0].url)
+}
 
 // Extract unique values for filters
 export const datasetTypes = Array.from(
   new Set(datasets.map((d) => d.datasetType)),
-).sort();
+).sort()
 export const institutions = Array.from(
   new Set(datasets.map((d) => d.institution)),
-).sort();
+).sort()
 export const diseases = Array.from(
   new Set(datasets.map((d) => d.disease).filter(Boolean)),
-).sort();
+).sort()
 export const drugs = Array.from(
   new Set(datasets.map((d) => d.drug).filter(Boolean)),
-).sort();
+).sort()
