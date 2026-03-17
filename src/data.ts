@@ -2,113 +2,26 @@ import type { Dataset } from './types'
 
 export const datasets: Dataset[] = [
   {
-    researcher: 'Dr. Sarah Chen',
-    researcherEmail: 'sarah.chen@uaf.edu',
-    institution: 'University of Alaska Fairbanks',
-    datasetName: 'Immunotherapy Response Biomarkers',
-    datasetDescription: 'Biomarker data from clinical trials studying patient response to immunotherapy treatments.',
-    datasetType: 'Clinical Trial Data',
-    disease: 'Melanoma',
-    drug: 'Pembrolizumab',
-    url: 'https://doi.org/10.11587/ABCD1234'
+    researcher: 'Stephanie Tullo',
+    researcherEmail: 'stephanie.tullo@douglas.ca',
+    institution: 'Douglas',
+    datasetName: 'Dataset for manuscript titled: Female mice exhibit resistance to disease progression despite early pathology in a transgenic mouse model inoculated with alpha-synuclein fibrils',
+    datasetDescription: "This repository contains the source data and code for the analyses in the manuscript titled \"Female mice exhibit resistance to disease progression despite early pathology in a transgenic mouse model inoculated with alpha-synuclein fibrils\", accepted for publication at Communications Biology.",
+    datasetType: 'source data (demographics (csv) MRI statistical maps and group average (MINC), behavioural data (csv)) and code',
+    disease: 'Synucleinopathies',
+    drug: 'NA',
+    url: 'https://doi.org/10.5281/zenodo.14655730'
   },
   {
-    researcher: 'Dr. James Wilson',
-    researcherEmail: 'james.wilson@ubc.ca',
-    institution: 'University of British Columbia',
-    datasetName: "Alzheimer's Progression Markers",
-    datasetDescription: 'Longitudinal data tracking cognitive decline and biomarker changes in Alzheimer\'s patients.',
-    datasetType: 'Longitudinal Study',
-    disease: "Alzheimer's Disease",
-    url: 'https://doi.org/10.5281/zenodo.11223344'
-  },
-  {
-    researcher: 'Dr. Margaret Brown',
-    researcherEmail: 'margaret.brown@utoronto.ca',
-    institution: 'University of Toronto',
-    datasetName: 'MRSA Genomic Sequencing',
-    datasetDescription: 'Whole genome sequences of methicillin-resistant Staphylococcus aureus isolates.',
-    datasetType: 'Genomic Data',
-    disease: 'MRSA Infection',
-    drug: 'Vancomycin',
-    url: 'https://doi.org/10.5281/zenodo.55667788'
-  },
-  {
-    researcher: 'Dr. Jennifer Martinez',
-    researcherEmail: 'jennifer.martinez@mcgill.ca',
-    institution: 'McGill University',
-    datasetName: 'Heart Failure Clinical Trial Results',
-    datasetDescription: 'Clinical outcomes data from phase III trials of new heart failure medications.',
-    datasetType: 'Clinical Trial Data',
-    disease: 'Heart Failure',
-    drug: 'Sacubitril/Valsartan',
-    url: 'https://doi.org/10.11587/WXYZ6789'
-  },
-  {
-    researcher: 'Dr. William Johnson',
-    researcherEmail: 'william.johnson@ualberta.ca',
-    institution: 'University of Alberta',
-    datasetName: 'Type 2 Diabetes Management Study',
-    datasetDescription: 'Patient data comparing effectiveness of different diabetes management protocols.',
-    datasetType: 'Clinical Study',
-    disease: 'Type 2 Diabetes',
-    drug: 'Metformin',
-    url: 'https://doi.org/10.5281/zenodo.99887766'
-  },
-  {
-    researcher: 'Dr. Christopher Lewis',
-    researcherEmail: 'christopher.lewis@ubc.ca',
-    institution: 'University of British Columbia',
-    datasetName: 'Cystic Fibrosis Drug Response',
-    datasetDescription: 'Data on patient response to CFTR modulator therapies in rare genetic mutations.',
-    datasetType: 'Clinical Research',
-    disease: 'Cystic Fibrosis',
-    drug: 'Ivacaftor',
-    url: 'https://doi.org/10.11587/LMNO3456'
-  },
-  {
-    researcher: 'Dr. Andrew Young',
-    researcherEmail: 'andrew.young@utoronto.ca',
-    institution: 'University of Toronto',
-    datasetName: 'Depression Treatment Outcomes',
-    datasetDescription: 'Long-term outcomes data for various depression treatment modalities.',
-    datasetType: 'Longitudinal Study',
-    disease: 'Major Depressive Disorder',
-    drug: 'Sertraline',
-    url: 'https://doi.org/10.5281/zenodo.33445566'
-  },
-  {
-    researcher: 'Dr. Nancy Scott',
-    researcherEmail: 'nancy.scott@mcgill.ca',
-    institution: 'McGill University',
-    datasetName: 'COVID-19 Vaccine Efficacy',
-    datasetDescription: 'Immune response data from COVID-19 vaccine clinical trials.',
-    datasetType: 'Clinical Trial Data',
-    disease: 'COVID-19',
-    drug: 'mRNA Vaccine',
-    url: 'https://doi.org/10.11587/QRST7890'
-  },
-  {
-    researcher: 'Dr. Steven Clark',
-    researcherEmail: 'steven.clark@ualberta.ca',
-    institution: 'University of Alberta',
-    datasetName: 'Rheumatoid Arthritis Biomarkers',
-    datasetDescription: 'Biomarker data for early detection and monitoring of rheumatoid arthritis.',
-    datasetType: 'Biomarker Study',
-    disease: 'Rheumatoid Arthritis',
-    drug: 'Methotrexate',
-    url: 'https://doi.org/10.5281/zenodo.77889900'
-  },
-  {
-    researcher: 'Dr. Joshua Hill',
-    researcherEmail: 'joshua.hill@utoronto.ca',
-    institution: 'University of Toronto',
-    datasetName: 'Lung Cancer Treatment Response',
-    datasetDescription: 'Data on tumor response to targeted therapies in non-small cell lung cancer.',
-    datasetType: 'Clinical Trial Data',
-    disease: 'Lung Cancer',
-    drug: 'Erlotinib',
-    url: 'https://doi.org/10.11587/UVWX1234'
+    researcher: 'Stephanie Tullo',
+    researcherEmail: 'stephanie.tullo@douglas.ca',
+    institution: 'Douglas',
+    datasetName: 'In vivo and in silico alpha-synuclein propagation dynamics: The role of genotype, epicentre, and connectivity',
+    datasetDescription: "This repository contains the source data and code for the analyses in the manuscript titled \"In vivo and in silico alpha-synuclein propagation dynamics: The role of genotype, epicentre, and connectivity\"",
+    datasetType: 'source data (demographics (csv) MRI statistical maps and group average (MINC), behavioural data (csv)) and code',
+    disease: 'Synucleinopathies',
+    drug: 'NA',
+    url: 'https://doi.org/10.5281/zenodo.16614414'
   },
 ]
 
