@@ -8,7 +8,11 @@ function parseTSV(tsvContent: string): Dataset[] {
   const datasets: Dataset[] = []
   
   for (let i = 1; i < lines.length; i++) {
-    const values = lines[i].split('\t')
+    const values = lines[i].split('\t').map((v) => v.trim())
+    if (values.length !== 9) {
+      console.warn(`Skipping malformed TSV row at Line ${i + 1}: expected 9 columns, got ${values.length}`)
+      continue
+    }
     const dataset: Dataset = {
       researcher: values[0],
       researcherEmail: values[1],
@@ -33,12 +37,8 @@ import dataTsvContent from './data.tsv?raw'
 export const datasets: Dataset[] = parseTSV(dataTsvContent)
 
 // Debug: Check parsing
-console.log('TSV Content length:', dataTsvContent.length)
-console.log('First line length:', dataTsvContent.split('\n')[0].length)
-console.log('Datasets parsed:', datasets.length)
-if (datasets.length > 0) {
-  console.log('First dataset:', JSON.stringify(datasets[0], null, 2))
-  console.log('First dataset URL:', datasets[0].url)
+if (import.meta.env.DEV) {
+  console.debug('Datasets parsed:', datasets.length)
 }
 
 // Extract unique values for filters
